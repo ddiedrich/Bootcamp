@@ -1,0 +1,44 @@
+/*
+SQL
+Data Import
+Data Import:
+Import your cleaned data into your database tables
+Verify data integrity after import
+
+Data Verification:
+Write queries to verify row counts match your original dataset
+*/
+
+SELECT ("IMBD title ID")
+FROM "Movie Analysis"
+
+-- 100 rows
+
+SELECT SUM("Income")
+FROM "Movie Analysis"
+
+-- 29912549111
+
+-- Check for any data type issues or constraints that need addressing
+-- 3 different genres per movie appeared to be a problem that wasn't easily solvable. 
+-- I think that I should be able to run a SQL query for the 3 genres in Letos (practice unnion queries in the future)
+
+SELECT TRIM(Genre) AS Genre, COUNT("IMBD title ID") AS "Movie Count"
+FROM (
+    SELECT "IMBD title ID", Genre_1 AS Genre FROM "Movie Analysis"
+    UNION ALL
+    SELECT "IMBD title ID", Genre_2 FROM "Movie Analysis"
+    UNION ALL
+    SELECT "IMBD title ID", Genre_3 FROM "Movie Analysis"
+)
+WHERE Genre IS NOT NULL AND TRIM(Genre) != '' -- (practice TRIM in the future)
+GROUP BY TRIM(Genre)
+ORDER BY "Movie Count" DESC;
+
+-- Genre | Movie Count
+-- Drama | 67
+-- Adventure | 29
+
+-- Because I had to use TRIM, my data was not 100% cleaned
+
+

@@ -1,0 +1,37 @@
+-- Basic Selection: 
+
+SELECT title, release_date FROM Songs
+WHERE release_date >= 2022
+AND release_date < 2023
+ORDER BY release_date DESC;
+
+-- Filtering: 
+
+SELECT title, popularity_score, duration_seconds
+FROM Songs
+WHERE popularity_score >= 80
+AND duration_seconds < 240;
+
+-- Pattern Matching:
+
+SELECT artist_name 
+FROM Artists
+WHERE artist_name LIKE 'The%';
+
+-- Multiple Conditions:
+
+SELECT first_name, last_name, join_date, premium_member
+FROM Customers 
+WHERE join_date >=2022
+AND join_date <2023;
+
+-- Calculations and Aliasing:
+
+SELECT SUM(duration_seconds) / 60.0 AS total_duration_minutes
+FROM Songs;
+
+What about the whole database?
+
+-- Advanced Filtering:
+
+

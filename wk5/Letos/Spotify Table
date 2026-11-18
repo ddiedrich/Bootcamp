@@ -1,0 +1,116 @@
+
+Basic Selection
+
+SELECT track_name,artist,popularity
+FROM "Spotify Table"
+
+
+SELECT track_name,artist,popularity
+FROM "Spotify Table"
+ORDER BY popularity DESC;
+
+SELECT track_name,artist,popularity
+FROM "Spotify Table"
+ORDER BY popularity ASC;
+
+Column Aliases
+
+SELECT track_name AS "Song Title", artist AS "Artist Name",popularity AS "Popularity Score"
+FROM "Spotify Table"
+
+SELECT track_name AS "Song Title",
+       artist AS "Artist Name",
+       popularity AS "Popularity Score"
+FROM "Spotify Table"
+
+Filtering with WHERE
+
+SELECT track_name, popularity FROM "Spotify Table" WHERE popularity >=90
+SELECT popularity FROM "Spotify Table" WHERE popularity >=90
+
+I wasn't able to use the alias from above for this
+
+Multiple Conditions:
+
+SELECT track_name, artist, popularity 
+FROM "Spotify Table" 
+WHERE artist = 'The Weeknd' AND popularity >= 85
+OR artist ='Drake' AND popularity >=85;
+
+SELECT track_name, artist, popularity 
+FROM "Spotify Table" 
+WHERE artist IN ('The Weeknd', 'Drake')
+AND popularity >= 85;
+
+SELECT track_name, album, popularity
+FROM "Spotify Table" 
+WHERE album IN ('Starboy','1989')
+AND popularity >= 70
+
+Pattern Matching:
+
+Select artist, track_name
+FROM "Spotify Table"
+WHERE track_name LIKE '%Love%';
+
+Range Checking:
+
+SELECT track_name, duration
+FROM "Spotify Table" 
+WHERE duration BETWEEN 3 AND 4;
+
+SELECT track_name, release_date
+FROM "Spotify Table"
+WHERE release_date 
+BETWEEN 2020 AND 'Today';
+
+Does Today work as an operator like in Excel?
+
+SELECT track_name, release_date
+FROM "Spotify Table"
+WHERE release_date 
+BETWEEN 2020-01 AND 2022-12;
+
+(That didn't work)
+
+Sorting Results:
+
+See example above for popularity DESC
+
+SELECT artist
+FROM "Spotify Table"
+ORDER BY artist ASC;
+
+Multiple Column Sorting:
+
+SELECT artist, popularity
+FROM "Spotify Table"
+ORDER BY artist ASC,popularity DESC;
+
+Combining WHERE and ORDER BY:
+
+SELECT track_name, release_date, popularity
+FROM "Spotify Table"
+WHERE release_date >= 2020
+AND release_date < 2021
+ORDER BY popularity DESC;
+
+SELECT track_name, release_date, popularity
+FROM "Spotify Table"
+WHERE release_date >= '2020-01-01'
+AND release_date < '2021-01-01'
+ORDER BY popularity DESC;
+
+Comprehensive Query:
+
+SELECT track_name, artist, duration
+FROM "Spotify Table"
+WHERE duration = 4
+AND artist LIKE 'A%'
+ORDER BY artist ASC, duration DESC;
+
+
+
+
+
+
